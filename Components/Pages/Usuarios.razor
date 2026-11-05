@@ -1,0 +1,94 @@
+@page "/usuarios"
+
+<div class="grid grid-cols-4 gap-4 p-4">
+
+    @foreach (Usuario usuario in lstUsuarios)
+    {
+        <div class="flex flex-col justify-center border-2 rounded-md p-4 m-2 gap-2 bg-white shadow-lg hover:shadow-xl transition">
+
+            <h2 class="font-bold text-2xl text-blue-600">
+                @usuario.Nombre
+            </h2>
+
+            <p><b>Color: </b>@usuario.Color</p>
+            <p><b>Correo: </b>@usuario.Correo</p>
+            <p><b>Contraseña: </b>@usuario.Contrasena</p>
+            <p><b>Estatura: </b>@usuario.Estatura m</p>
+            <p><b>Fecha de nacimiento: </b>@usuario.FechaNacimiento</p>
+
+        </div>
+    }
+
+</div>
+
+@code {
+
+    private List<Usuario> lstUsuarios = new()
+    {
+        new Usuario(
+            "Mateo Vargas",
+            "Morena",
+            "mateo.vargas@example.com",
+            "DemoMateo01!",
+            1.75,
+            "2001-03-15"),
+
+        new Usuario(
+            "Valentina Rojas",
+            "Clara",
+            "valentina.rojas@example.com",
+            "DemoVale02!",
+            1.62,
+            "2002-07-22"),
+
+        new Usuario(
+            "Santiago Flores",
+            "Oscura",
+            "santiago.flores@example.com",
+            "DemoSanti03!",
+            1.80,
+            "2000-11-08"),
+
+        new Usuario(
+            "Camila Mendoza",
+            "Trigueña",
+            "camila.mendoza@example.com",
+            "DemoCami04!",
+            1.65,
+            "2003-01-30"),
+
+        new Usuario(
+            "Sebastián Torres",
+            "Clara",
+            "sebastian.torres@example.com",
+            "DemoSeba05!",
+            1.78,
+            "1999-09-12")
+    };
+
+    public class Usuario
+    {
+        public string? Nombre { get; set; }
+        public string? Color { get; set; }
+        public string? Correo { get; set; }
+        public string? Contrasena { get; set; }
+        public double Estatura { get; set; }
+        public string? FechaNacimiento { get; set; }
+
+        public Usuario(
+            string nombre,
+            string color,
+            string correo,
+            string contrasena,
+            double estatura,
+            string fechaNacimiento)
+        {
+            Nombre = nombre;
+            Color = color;
+            Correo = correo;
+            Contrasena = contrasena;
+            Estatura = estatura;
+            FechaNacimiento = fechaNacimiento;
+        }
+    }
+}
