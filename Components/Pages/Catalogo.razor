@@ -17,7 +17,7 @@
     @foreach (Cafe cafe in lstCafes)
     {
         <Coffeecard Id="@cafe.Id" Imagen="@cafe.Imagen" NombreCafe="@cafe.NombreCafe" DescripcionCafe="@cafe.DescripcionCafe"
-                    PrecioCafe="@cafe.PrecioCafe" EnviarNotificacionActualizacion="ActualizarProducto"></Coffeecard>
+                    PrecioCafe="@cafe.PrecioCafe" EnviarNotificacionActualizacion="ActualizarProducto" EnviarNotificacionEliminacion="EliminarProducto"></Coffeecard>
     }
 </div>
 
@@ -51,6 +51,14 @@
 
         _dbService.SaveChanges();
 
+        return Task.CompletedTask;
+    }
+
+    
+    private Task EliminarProducto(int id)
+    {
+        var cafe = _dbService.Cafes.Remove(_dbService.Cafes.FirstOrDefault(c => c.Id == id));
+        _dbService.SaveChanges();
         return Task.CompletedTask;
     }
 }
